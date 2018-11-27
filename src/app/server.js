@@ -8,3 +8,4 @@ var handleRequest = (request, response) => {
 
 var www = http.createServer(handleRequest);
 www.listen(8888);
+console.log('Listening in 8888...');
