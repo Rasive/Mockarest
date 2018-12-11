@@ -1,0 +1,39 @@
+{
+    "defaultSeverity": "error",
+    "extends": [
+        "tslint:recommended"
+    ],
+    "jsRules": {},
+    "rules": {
+        "prefer-const": true,
+        "arrow-return-shorthand": true,
+        "await-promise": true,
+        "align": true,
+        "class-name": true,
+        "deprecation": true,
+        "encoding": true,
+        "import-spacing": true,
+        "indent": true,
+        "newline-before-return": true,
+        "interface-name": true,
+        "completed-docs": true,
+        "eofline": true,
+        "jsdoc-format": true,
+        "member-ordering": true,
+        "no-consecutive-blank-lines": true,
+        "no-implicit-dependencies": false,
+        "no-unused-expression": false,
+        "no-floating-promises": true,
+        "no-reference": true,
+        "only-arrow-functions": true,
+        "prefer-readonly": true,
+        "radix": true,
+        "semicolon": true,
+        "variable-name": [
+            true,
+            "check-format",
+            "allow-leading-underscore"
+        ]
+    },
+    "rulesDirectory": []
+}
