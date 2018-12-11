@@ -1,0 +1,46 @@
+{
+    "name": "Scenario #1",
+    "description": "Some scenario",
+    "states": [
+        {
+            "id": "state_1",
+            "endpoints": [
+                {
+                    "method": "GET|POST",
+                    "path": "^/hello|hi/[a-z]+$",
+                    "response": {
+                        "delay": 1000,
+                        "statusCode": 200,
+                        "header": {
+                            "Content-Type": "application/json"
+                        },
+                        "body": "HELLO WORLD 1"
+                    },
+                    "action": {
+                        "precondition": "callCount >= 2",
+                        "goto": "@states/state_2"
+                    }
+                }
+            ]
+        },
+        {
+            "id": "state_2",
+            "endpoints": [
+                {
+                    "method": "GET",
+                    "path": "/hello",
+                    "response": {
+                        "statusCode": 200,
+                        "header": {
+                            "Content-Type": "application/json"
+                        },
+                        "body": "HELLO WORLD 2"
+                    },
+                    "action": {
+                        "goto": "@states/state_1"
+                    }
+                }
+            ]
+        }
+    ]
+}
