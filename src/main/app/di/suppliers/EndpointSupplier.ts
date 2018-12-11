@@ -1,5 +1,5 @@
 import { Endpoint } from "../../domains/Endpoint";
-import { ISupplier } from "../../interfaces/Supplier";
+import { ISupplier } from "../../interfaces/ISupplier";
 import { ActionSupplier } from "./ActionSupplier";
 import { ResponseSupplier } from "./ResponseSupplier";
 

@@ -1,5 +1,5 @@
 import { State } from "../../domains/State";
-import { ISupplier } from "../../interfaces/Supplier";
+import { ISupplier } from "../../interfaces/ISupplier";
 import { JSONMap } from "../../utils/JSONMap";
 import { EndpointSupplier } from "./EndpointSupplier";
 

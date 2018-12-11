@@ -1,5 +1,5 @@
 import { Response } from "../../domains/Response";
-import { ISupplier } from "../../interfaces/Supplier";
+import { ISupplier } from "../../interfaces/ISupplier";
 
 export class ResponseSupplier implements ISupplier<Response> {
 

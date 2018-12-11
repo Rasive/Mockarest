@@ -1,6 +1,6 @@
 import * as Express from "express";
 import { Parsable } from "../interfaces/Parsable";
-import { ISupplier } from "../interfaces/Supplier";
+import { ISupplier } from "../interfaces/ISupplier";
 import { Action } from "./Action";
 import { Response } from "./Response";
 import { State } from "./State";

@@ -1,5 +1,5 @@
 import { Scenario } from "../../domains/Scenario";
-import { ISupplier } from "../../interfaces/Supplier";
+import { ISupplier } from "../../interfaces/ISupplier";
 import { JSONMap } from "../../utils/JSONMap";
 
 export class ScenarioSupplier implements ISupplier<Scenario> {
