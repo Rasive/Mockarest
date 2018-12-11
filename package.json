@@ -4,18 +4,32 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "mocha -r ts-node/register src/tests/**/*.spec.ts",
-    "start": "node ./src/app/server.js"
+    "build": "tsc",
+    "lint": "./node_modules/.bin/tslint --project .",
+    "dev": "./node_modules/.bin/ts-node ./src/typescript/server.ts",
+    "test": "./node_modules/.bin/mocha -r ts-node/register src/test/**/*.spec.ts",
+    "start": "node ./dist/server.js"
   },
   "author": "Rasmus Zweidorff Iversen",
   "license": "ISC",
   "devDependencies": {
     "@types/chai": "^4.1.7",
+    "@types/express": "^4.16.0",
     "@types/mocha": "^5.2.5",
-    "@types/node": "^10.12.11",
+    "@types/node": "^10.12.12",
+    "@types/rx": "^4.1.1",
     "chai": "^4.2.0",
     "mocha": "^5.2.0",
-    "ts-node": "^7.0.1"
+    "ts-node": "^7.0.1",
+    "tslint": "^5.11.0",
+    "typemoq": "^2.1.0"
   },
-  "dependencies": {}
+  "dependencies": {
+    "@types/minimist": "^1.2.0",
+    "express": "^4.16.4",
+    "minimist": "^1.2.0",
+    "rxjs": "^6.3.3",
+    "safe-eval": "^0.4.1",
+    "typescript": "^3.2.1"
+  }
 }
