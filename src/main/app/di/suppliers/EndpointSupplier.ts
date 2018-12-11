@@ -1,13 +1,13 @@
 import { Endpoint } from "../../domains/Endpoint";
-import ISupplier from "../../interfaces/Supplier";
-import ActionSupplier from "./ActionSupplier";
-import ResponseSupplier from "./ResponseSupplier";
+import { ISupplier } from "../../interfaces/Supplier";
+import { ActionSupplier } from "./ActionSupplier";
+import { ResponseSupplier } from "./ResponseSupplier";
 
-export default class EndpointSupplier implements ISupplier<Endpoint> {
+export class EndpointSupplier implements ISupplier<Endpoint> {
 
     constructor(
         private _responseSupplier: ResponseSupplier,
-        private _actionSupplier: ActionSupplier) {}
+        private _actionSupplier: ActionSupplier) { }
 
     public create(): Endpoint {
         return new Endpoint();

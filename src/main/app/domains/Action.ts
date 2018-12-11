@@ -2,15 +2,7 @@ import { Subject } from "rxjs";
 import * as SafeEval from "safe-eval";
 import { Parsable } from "../interfaces/Parsable";
 
-@Parsable<Action>()
 export class Action {
-    public static fromJSON(json: any, activeStateSubject: Subject<string>): Action {
-        const action = new Action(activeStateSubject, SafeEval);
-        action.precondition = json.precondition;
-        action.goto = json.goto;
-
-        return action;
-    }
 
     public precondition: string;
     public goto: string;
@@ -30,4 +22,5 @@ export class Action {
             this._activeStateSubject.next(this.goto);
         }
     }
+
 }

@@ -3,16 +3,7 @@ import { Parsable } from "../interfaces/Parsable";
 import { JSONMap } from "../utils/JSONMap";
 import { State } from "./State";
 
-@Parsable<Scenario>()
 export class Scenario {
-
-    public static fromJSON(json: any): Scenario {
-        const scenario = new Scenario();
-        scenario.name = json.name;
-        scenario.description = json.description;
-
-        return scenario;
-    }
 
     public name: string;
     public description: string;
@@ -30,4 +21,5 @@ export class Scenario {
     public set states(states: State[]) {
         this._states = states;
     }
+
 }

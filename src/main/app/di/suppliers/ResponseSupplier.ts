@@ -1,7 +1,7 @@
-import Response from "../../domains/Response";
-import ISupplier from "../../interfaces/Supplier";
+import { Response } from "../../domains/Response";
+import { ISupplier } from "../../interfaces/Supplier";
 
-export default class ResponseSupplier implements ISupplier<Response> {
+export class ResponseSupplier implements ISupplier<Response> {
 
     public create(): Response {
         return new Response();

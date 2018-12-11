@@ -3,15 +3,8 @@ import { Parsable } from "../interfaces/Parsable";
 import { JSONMap } from "../utils/JSONMap";
 import { Endpoint } from "./Endpoint";
 
-@Parsable<State>()
 export class State {
 
-    public static fromJSON(json: any): State {
-        const state = new State();
-        state.id = json.id;
-
-        return state;
-    }
     public id: string;
     public endpoints: Endpoint[];
     public callCount = 0;
@@ -34,4 +27,5 @@ export class State {
     public reset(): void {
         this.endpoints.forEach((endpoint: Endpoint) => endpoint.reset());
     }
+
 }

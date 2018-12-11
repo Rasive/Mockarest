@@ -1,8 +1,8 @@
 import { Scenario } from "../../domains/Scenario";
-import ISupplier from "../../interfaces/Supplier";
+import { ISupplier } from "../../interfaces/Supplier";
 import { JSONMap } from "../../utils/JSONMap";
 
-export default class ScenarioSupplier implements ISupplier<Scenario> {
+export class ScenarioSupplier implements ISupplier<Scenario> {
 
     constructor(private _stateSupplier) { }
 

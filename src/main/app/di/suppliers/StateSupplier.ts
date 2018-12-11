@@ -1,7 +1,7 @@
 import { State } from "../../domains/State";
-import ISupplier from "../../interfaces/Supplier";
+import { ISupplier } from "../../interfaces/Supplier";
 import { JSONMap } from "../../utils/JSONMap";
-import EndpointSupplier from "./EndpointSupplier";
+import { EndpointSupplier } from "./EndpointSupplier";
 
 export class StateSupplier implements ISupplier<State> {
 

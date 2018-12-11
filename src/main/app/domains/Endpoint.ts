@@ -1,19 +1,12 @@
 import * as Express from "express";
 import { Parsable } from "../interfaces/Parsable";
+import { ISupplier } from "../interfaces/Supplier";
 import { Action } from "./Action";
 import { Response } from "./Response";
 import { State } from "./State";
 
-@Parsable<Endpoint>()
 export class Endpoint {
 
-    public static fromJSON(json: any): Endpoint {
-        const endpoint = new Endpoint();
-        endpoint.method = json.method;
-        endpoint.path = json.path;
-
-        return endpoint;
-    }
     public method: string;
     public path: string;
     public response: Response;
