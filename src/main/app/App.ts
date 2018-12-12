@@ -12,7 +12,11 @@ export default class App {
     constructor(
         private readonly _port: number,
         private readonly _app: Express.Application,
-        public routerSubject: Subject<Express.Router>) { }
+        public readonly routerSubject: Subject<Express.Router>) {
+            this.routerSubject.subscribe((router) => {
+                this._router = router;
+            });
+        }
 
     public run(): any {
         this._app.use((req, res, next) => {

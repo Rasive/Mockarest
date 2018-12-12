@@ -1,10 +1,12 @@
 import * as Express from "express";
-import { Parsable } from "../interfaces/Parsable";
+import { Router } from "express";
+import { Subject } from "rxjs";
 import { Action } from "./Action";
 import { Response } from "./Response";
-import { State } from "./State";
 
 export class Endpoint {
+
+    constructor(private _routerSubject: Subject<Router>) { }
 
     public method: string;
     public path: string;
