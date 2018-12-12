@@ -1,5 +1,6 @@
 import * as minimist from "minimist";
 import App from "./app/App";
+import { AppModule } from "./app/di/modules/AppModule";
 import FileUtil from "./app/utils/FileUtil";
 
 let args: minimist.ParsedArgs;
@@ -14,7 +15,8 @@ if (!args["load-scenario"] || typeof args["load-scenario"] !== "string") {
     throw new Error("Missing argument: --load-scenario <path>");
 }
 
-const scenario = FileUtil.loadScenario(args["load-scenario"]);
-const app: App = new App();
+const json = FileUtil.loadScenario(args["load-scenario"]);
+const appModule = new AppModule();
+const app = appModule.build(json);
+
 app.run();
-app.scenario = scenario;
