@@ -17,7 +17,7 @@ export class StateSupplier implements ISupplier<State> {
         const state = this.create();
         state.id = json.id;
         state.endpoints = JSONMap.map(json.endpoints, (endpointJson) =>
-            this._endpointSupplier.createFromJSON(endpointJson, scenario, app));
+            this._endpointSupplier.createFromJSON(endpointJson, scenario));
 
         return state;
     }

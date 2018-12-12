@@ -13,12 +13,12 @@ export class EndpointSupplier implements ISupplier<Endpoint> {
         private _responseSupplier: ResponseSupplier,
         private _actionSupplier: ActionSupplier) { }
 
-    public create(routerSubject: Subject<Router>): Endpoint {
-        return new Endpoint(routerSubject);
+    public create(): Endpoint {
+        return new Endpoint();
     }
 
-    public createFromJSON(json: any, scenario: Scenario, app: App): Endpoint {
-        const endpoint = this.create(app.routerSubject);
+    public createFromJSON(json: any, scenario: Scenario): Endpoint {
+        const endpoint = this.create();
         endpoint.method = json.method;
         endpoint.path = json.path;
         endpoint.response = this._responseSupplier.createFromJSON(json.response);
