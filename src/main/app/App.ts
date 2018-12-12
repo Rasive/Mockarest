@@ -11,6 +11,7 @@ export default class App {
         private readonly _app: Express.Application,
         public readonly activeRouterObservable: Observable<Router>) {
         this.activeRouterObservable.subscribe((router) => {
+            Log.debug("Setting router: ", router);
             this._router = router;
         });
     }

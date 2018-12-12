@@ -2,6 +2,7 @@ import * as minimist from "minimist";
 import App from "./app/App";
 import { AppModule } from "./app/di/modules/AppModule";
 import FileUtil from "./app/utils/FileUtil";
+import { Log } from "./app/utils/Log";
 
 let args: minimist.ParsedArgs;
 

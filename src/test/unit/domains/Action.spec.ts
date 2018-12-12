@@ -5,22 +5,6 @@ import { IMock, It, Mock, Times } from "typemoq";
 import { Action } from "../../../main/app/domains/Action";
 
 describe("Action", () => {
-    context("fromJSON", () => {
-        it("should create an instance from json", () => {
-            // arrange
-            const json: JSON = JSON.parse(`{
-                "precondition": "1 == 1",
-                "goto": "@null"
-            }`);
-
-            // act
-            const action = Action.fromJSON(json, It.isAnyObject(undefined));
-
-            // assert
-            Chai.expect(action).to.not.be.undefined;
-        });
-    });
-
     context("execute", () => {
         it("should run SafeEval when precondition and goto is set", () => {
             // arrange

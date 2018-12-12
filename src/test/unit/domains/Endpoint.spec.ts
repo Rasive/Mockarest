@@ -1,25 +1,9 @@
 import { expect } from "chai";
-import { Router, Request, Response } from "express";
+import { Request, Response, Router } from "express";
 import { IMock, It, Mock, Times } from "typemoq";
 import { Endpoint } from "../../../main/app/domains/Endpoint";
 
 describe("Endpoint", () => {
-    context("fromJSON", () => {
-        it("should create an instance from json", () => {
-            // arrange
-            const json = `{
-                "method": "GET",
-                "path": "/some/path"
-            }`;
-
-            // act
-            const endpoint = Endpoint.fromJSON(json);
-
-            // assert
-            expect(endpoint).to.not.be.undefined;
-        });
-    });
-
     context("process", () => {
         it("should setup GET, POST, PUT, PATCH and DELETE for router", () => {
             // arange

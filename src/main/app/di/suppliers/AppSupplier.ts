@@ -19,7 +19,7 @@ export class AppSupplier implements ISupplier<App> {
 
     public createFromJSON(json: any, port: number): App {
         const app = this.create(port);
-        app.scenario = this._scenarioSupplier.createFromJSON(json.scenario, app);
+        app.scenario = this._scenarioSupplier.createFromJSON(json, app);
 
         return app;
     }
