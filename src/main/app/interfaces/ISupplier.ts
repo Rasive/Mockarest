@@ -1,6 +1,6 @@
 export interface ISupplier<T> {
 
-    create(): T;
+    create(...arg: any): T;
 
-    createFromJSON(json: any): T;
+    createFromJSON(json: any, ...arg: any): T;
 }
