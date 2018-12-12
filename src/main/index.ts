@@ -16,7 +16,9 @@ if (!args["load-scenario"] || typeof args["load-scenario"] !== "string") {
 }
 
 const json = FileUtil.loadScenario(args["load-scenario"]);
-const appModule = new AppModule();
-const app = appModule.build(json);
+const port = 8080;
+
+const appModule = new AppModule(port, json);
+const app = appModule.build();
 
 app.run();
