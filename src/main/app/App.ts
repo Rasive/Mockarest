@@ -1,28 +1,29 @@
 import * as Express from "express";
-import minimist = require("minimist");
+import { Subject } from "rxjs";
 import { Scenario } from "./domains/Scenario";
 import { Log } from "./utils/Log";
 
 export default class App {
 
-    public express;
-    public router: Express.Router;
+    private _router: Express.Router;
+
     public scenario: Scenario;
 
-    constructor(private readonly _port: number) {
-        this.express = Express();
-    }
+    constructor(
+        private readonly _port: number,
+        private readonly _app: Express.Application,
+        public routerSubject: Subject<Express.Router>) { }
 
     public run(): any {
-        this.express.use((req, res, next) => {
-            if (this.router) {
-                this.router(req, res, next);
+        this._app.use((req, res, next) => {
+            if (this._router) {
+                this._router(req, res, next);
             } else {
                 next();
             }
         });
 
-        this.express.listen(this._port, () => {
+        this._app.listen(this._port, () => {
             Log.verbose("Server started on port: " + this._port);
         });
     }

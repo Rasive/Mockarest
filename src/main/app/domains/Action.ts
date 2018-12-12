@@ -8,8 +8,8 @@ export class Action {
     public goto: string;
 
     constructor(
-        private _activeStateSubject: Subject<string>,
-        private _safeEval: SafeEval) { }
+        private readonly _activeStateSubject: Subject<string>,
+        private readonly _safeEval: SafeEval) { }
 
     public execute(vars: any): void {
         if (this.precondition && this.goto) {

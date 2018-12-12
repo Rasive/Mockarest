@@ -10,10 +10,24 @@ export class Scenario {
 
     public states: State[];
 
-    constructor(public activeStateSubject: Subject<string>) { }
+    private _activeState: State;
+
+    constructor(public readonly activeStateSubject: Subject<string>) {
+        this.activeStateSubject.subscribe((stateId) => {
+            this._activeState = this.findState(stateId);
+        });
+
+        if (this.states.length > 0) {
+            this._activeState = this.states[0];
+        }
+    }
 
     public findState(id: string): State {
         return this.states.find((obj: State) => obj.id === id);
+    }
+
+    public get activeState(): State {
+        return this._activeState;
     }
 
 }

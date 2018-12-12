@@ -10,7 +10,11 @@ import { StateSupplier } from "../suppliers/StateSupplier";
 
 export class AppModule {
 
-    public build(json: any): App {
+    constructor(
+        private _port: number,
+        private _json: any) { }
+
+    public build(): App {
         const actionSupplier = new ActionSupplier();
         const responseSupplier = new ResponseSupplier();
         const endpointSupplier = new EndpointSupplier(responseSupplier, actionSupplier);
@@ -18,7 +22,7 @@ export class AppModule {
         const scenarioSupplier = new ScenarioSupplier(stateSupplier);
         const appSupplier = new AppSupplier(scenarioSupplier);
 
-        return appSupplier.createFromJSON(json);
+        return appSupplier.createFromJSON(this._json, this._port);
     }
 
 }
