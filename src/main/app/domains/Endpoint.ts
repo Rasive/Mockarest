@@ -6,8 +6,6 @@ import { Response } from "./Response";
 
 export class Endpoint {
 
-    constructor(private _routerSubject: Subject<Router>) { }
-
     public method: string;
     public path: string;
     public response: Response;
