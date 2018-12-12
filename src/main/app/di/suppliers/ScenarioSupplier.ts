@@ -1,20 +1,28 @@
+import { BehaviorSubject } from "rxjs";
 import { Scenario } from "../../domains/Scenario";
 import { ISupplier } from "../../interfaces/ISupplier";
 import { JSONMap } from "../../utils/JSONMap";
+import { ActionSupplier } from "./ActionSupplier";
+import { StateSupplier } from "./StateSupplier";
 
 export class ScenarioSupplier implements ISupplier<Scenario> {
 
-    constructor(private _stateSupplier) { }
+    constructor(
+        private _stateSupplier: StateSupplier) { }
 
     public create(): Scenario {
-        return new Scenario();
+        const activeState = new BehaviorSubject<string>(undefined);
+        const scenario = new Scenario(activeState);
+
+        return new Scenario(activeState);
     }
 
     public createFromJSON(json: any): Scenario {
         const scenario = this.create();
         scenario.name = json.name;
         scenario.description = json.description;
-        scenario.states = JSONMap.map(json.states, this._stateSupplier.createFromJSON);
+        scenario.states = JSONMap.map(json.states, (stateJson) =>
+            this._stateSupplier.createFromJSON(stateJson, scenario));
 
         return scenario;
     }

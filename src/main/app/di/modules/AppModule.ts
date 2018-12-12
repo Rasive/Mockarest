@@ -10,10 +10,8 @@ import { StateSupplier } from "../suppliers/StateSupplier";
 
 export class AppModule {
 
-    constructor(private _activeStateSubject: Subject<string>) {}
-
     public build(json: any): App {
-        const actionSupplier = new ActionSupplier(this._activeStateSubject);
+        const actionSupplier = new ActionSupplier();
         const responseSupplier = new ResponseSupplier();
         const endpointSupplier = new EndpointSupplier(responseSupplier, actionSupplier);
         const stateSupplier = new StateSupplier(endpointSupplier);
