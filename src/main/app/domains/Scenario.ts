@@ -6,13 +6,17 @@ import { State } from "./State";
 
 export class Scenario {
 
-    constructor(public readonly activeStateSubject: Subject<string>) {
-        this.activeRouterObservable =
-            this.activeStateSubject.pipe(map((stateId) =>
-                this.findState(stateId).fetchRouter()));
+    constructor(
+        public readonly activeStateSubject: Subject<string>,
+        public readonly activeRouterSubject: Subject<Router>) {
 
         this.activeStateSubject.subscribe((stateId) => {
-            Log.debug("Setting active state", stateId);
+            const state = this.findState(stateId);
+
+            if (state) {
+                const router = state.fetchRouter();
+                this.activeRouterSubject.next(router);
+            }
         });
     }
 
@@ -21,9 +25,9 @@ export class Scenario {
 
     private _states: State[];
 
-    public readonly activeRouterObservable: Observable<Router>;
-
     public findState(id: string): State {
+        if (!this.states) { return undefined; }
+
         return this._states.find((obj: State) => obj.id === id);
     }
 
@@ -33,9 +37,9 @@ export class Scenario {
 
     public set states(states: State[]) {
         if (states && states.length > 0) {
-            Log.debug("Setting states");
             this._states = states;
-            this.activeStateSubject.next(this.states[0].id);
+
+            this.activeStateSubject.next(states[0].id);
         }
     }
 

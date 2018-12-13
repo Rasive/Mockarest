@@ -1,4 +1,5 @@
-import { BehaviorSubject } from "rxjs";
+import { Router } from "express";
+import { BehaviorSubject, Observable, Subject } from "rxjs";
 import App from "../../App";
 import { Scenario } from "../../domains/Scenario";
 import { ISupplier } from "../../interfaces/ISupplier";
@@ -11,15 +12,14 @@ export class ScenarioSupplier implements ISupplier<Scenario> {
     constructor(
         private _stateSupplier: StateSupplier) { }
 
-    public create(): Scenario {
-        const activeState = new BehaviorSubject<string>(undefined);
-        const scenario = new Scenario(activeState);
+    public create(activeRouterSubject: Subject<Router>): Scenario {
+        const activeStateSubject = new BehaviorSubject<string>(undefined);
 
-        return new Scenario(activeState);
+        return new Scenario(activeStateSubject, activeRouterSubject);
     }
 
     public createFromJSON(json: any, app: App): Scenario {
-        const scenario = this.create();
+        const scenario = this.create(app.activeRouterSubject);
         scenario.name = json.name;
         scenario.description = json.description;
         scenario.states = JSONMap.map(json.states, (stateJson) =>
