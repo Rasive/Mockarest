@@ -1,6 +1,3 @@
-import { Router } from "express";
-import { Subject } from "rxjs";
-import App from "../../App";
 import { Endpoint } from "../../domains/Endpoint";
 import { Scenario } from "../../domains/Scenario";
 import { ISupplier } from "../../interfaces/ISupplier";

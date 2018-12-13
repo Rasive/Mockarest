@@ -1,7 +1,5 @@
 import { Router } from "express";
-import { Observable, Subject } from "rxjs";
-import { map } from "rxjs/operators";
-import { Log } from "../utils/Log";
+import { Subject } from "rxjs";
 import { State } from "./State";
 
 export class Scenario {

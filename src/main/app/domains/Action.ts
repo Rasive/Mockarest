@@ -1,6 +1,5 @@
 import { Subject } from "rxjs";
 import * as SafeEval from "safe-eval";
-import { Parsable } from "../interfaces/Parsable";
 
 export class Action {
 

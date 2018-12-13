@@ -1,6 +1,6 @@
 import * as Express from "express";
 import { Router } from "express";
-import { Observable, Subject } from "rxjs";
+import { Subject } from "rxjs";
 import { Scenario } from "./domains/Scenario";
 import { Log } from "./utils/Log";
 

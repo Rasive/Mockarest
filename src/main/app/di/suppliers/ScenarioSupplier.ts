@@ -1,10 +1,9 @@
 import { Router } from "express";
-import { BehaviorSubject, Observable, Subject } from "rxjs";
+import { BehaviorSubject, Subject } from "rxjs";
 import App from "../../App";
 import { Scenario } from "../../domains/Scenario";
 import { ISupplier } from "../../interfaces/ISupplier";
 import { JSONMap } from "../../utils/JSONMap";
-import { ActionSupplier } from "./ActionSupplier";
 import { StateSupplier } from "./StateSupplier";
 
 export class ScenarioSupplier implements ISupplier<Scenario> {

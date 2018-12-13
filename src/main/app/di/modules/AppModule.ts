@@ -1,6 +1,4 @@
-import { Subject } from "rxjs";
 import App from "../../App";
-import { IModule } from "../../interfaces/IModule";
 import { ActionSupplier } from "../suppliers/ActionSupplier";
 import { AppSupplier } from "../suppliers/AppSupplier";
 import { EndpointSupplier } from "../suppliers/EndpointSupplier";

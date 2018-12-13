@@ -1,5 +1,3 @@
-import { Parsable } from "../interfaces/Parsable";
-
 export class Response {
 
     public delay: number;
