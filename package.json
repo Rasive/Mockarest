@@ -1,17 +1,19 @@
 {
-  "name": "moccachino",
+  "name": "Mockarest",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
   "scripts": {
     "build": "tsc",
     "lint": "./node_modules/.bin/tslint --project .",
-    "dev": "./node_modules/.bin/ts-node ./src/typescript/server.ts",
     "test": "./node_modules/.bin/mocha -r ts-node/register src/test/**/*.spec.ts",
-    "start": "node ./dist/server.js"
+    "start": "./node_modules/.bin/ts-node ./src/main/main.js"
   },
   "author": "Rasmus Zweidorff Iversen",
   "license": "ISC",
+  "_moduleAliases": {
+    "@app": "./dist/src/main/app"
+  },
   "devDependencies": {
     "@types/chai": "^4.1.7",
     "@types/express": "^4.16.0",
@@ -28,6 +30,7 @@
     "@types/minimist": "^1.2.0",
     "express": "^4.16.4",
     "minimist": "^1.2.0",
+    "module-alias": "^2.1.0",
     "rxjs": "^6.3.3",
     "safe-eval": "^0.4.1",
     "typescript": "^3.2.1"
