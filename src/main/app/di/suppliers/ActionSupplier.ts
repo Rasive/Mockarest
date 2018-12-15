@@ -1,8 +1,7 @@
+import { Action, Scenario } from "@app/domains";
+import { ISupplier } from "@app/interfaces";
 import { Subject } from "rxjs";
 import * as SafeEval from "safe-eval";
-import { Action } from "../../domains/Action";
-import { Scenario } from "../../domains/Scenario";
-import { ISupplier } from "../../interfaces/ISupplier";
 
 export class ActionSupplier implements ISupplier<Action> {
 

@@ -1,8 +1,8 @@
+import { Scenario } from "@app/domains";
+import { Log } from "@app/utils";
 import * as Express from "express";
 import { Router } from "express";
 import { Subject } from "rxjs";
-import { Scenario } from "./domains/Scenario";
-import { Log } from "./utils/Log";
 
 export default class App {
 

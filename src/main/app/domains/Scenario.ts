@@ -1,6 +1,6 @@
+import { State } from "@app/domains";
 import { Router } from "express";
 import { Subject } from "rxjs";
-import { State } from "./State";
 
 export class Scenario {
 

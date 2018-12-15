@@ -1,7 +1,7 @@
 import * as fs from "fs";
 import * as path from "path";
 
-export default class FileUtil {
+export class FileUtil {
 
     public static loadScenario(scnearioFileName): any {
         if (!scnearioFileName) {

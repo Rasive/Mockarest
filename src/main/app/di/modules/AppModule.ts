@@ -1,10 +1,7 @@
-import App from "../../App";
-import { ActionSupplier } from "../suppliers/ActionSupplier";
-import { AppSupplier } from "../suppliers/AppSupplier";
-import { EndpointSupplier } from "../suppliers/EndpointSupplier";
-import { ResponseSupplier } from "../suppliers/ResponseSupplier";
-import { ScenarioSupplier } from "../suppliers/ScenarioSupplier";
-import { StateSupplier } from "../suppliers/StateSupplier";
+import App from "@app/App";
+import {
+    ActionSupplier, AppSupplier, EndpointSupplier,
+    ResponseSupplier, ScenarioSupplier, StateSupplier } from "@app/di/suppliers";
 
 export class AppModule {
 

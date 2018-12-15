@@ -1,9 +1,8 @@
-import App from "../../App";
-import { Scenario } from "../../domains/Scenario";
-import { State } from "../../domains/State";
-import { ISupplier } from "../../interfaces/ISupplier";
-import { JSONMap } from "../../utils/JSONMap";
-import { EndpointSupplier } from "./EndpointSupplier";
+import App from "@app/App";
+import { EndpointSupplier } from "@app/di/suppliers";
+import { Scenario, State } from "@app/domains";
+import { ISupplier } from "@app/interfaces";
+import { JSONMap } from "@app/utils";
 
 export class StateSupplier implements ISupplier<State> {
 

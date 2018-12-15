@@ -1,9 +1,9 @@
+import App from "@app/App";
+import { ScenarioSupplier } from "@app/di/suppliers";
+import { ISupplier } from "@app/interfaces";
 import * as express from "express";
 import { Router } from "express";
 import { BehaviorSubject } from "rxjs";
-import App from "../../App";
-import { ISupplier } from "../../interfaces/ISupplier";
-import { ScenarioSupplier } from "./ScenarioSupplier";
 
 export class AppSupplier implements ISupplier<App> {
 

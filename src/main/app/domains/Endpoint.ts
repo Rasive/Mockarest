@@ -1,6 +1,6 @@
+import { Action } from "@app/domains";
+import { Response } from "@app/domains";
 import * as Express from "express";
-import { Action } from "./Action";
-import { Response } from "./Response";
 
 export class Endpoint {
 

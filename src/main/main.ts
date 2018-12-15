@@ -1,6 +1,6 @@
+import { AppModule } from "@app/di/modules";
+import { FileUtil } from "@app/utils";
 import * as minimist from "minimist";
-import { AppModule } from "./app/di/modules/AppModule";
-import FileUtil from "./app/utils/FileUtil";
 
 let args: minimist.ParsedArgs;
 

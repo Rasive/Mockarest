@@ -1,5 +1,5 @@
-import { Response } from "../../domains/Response";
-import { ISupplier } from "../../interfaces/ISupplier";
+import { Response } from "@app/domains";
+import { ISupplier } from "@app/interfaces";
 
 export class ResponseSupplier implements ISupplier<Response> {
 

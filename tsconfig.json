@@ -5,14 +5,16 @@
     "moduleResolution": "node",
     "experimentalDecorators": true,
     "outDir": "dist",
-    "sourceMap": true
+    "sourceMap": true,
+    "baseUrl": "./src",
+    "paths": {
+      "@app/*": [
+        "main/app/*"
+      ],
+    }
   },
-  "files": [
-    "./node_modules/@types/mocha/index.d.ts",
-    "./node_modules/@types/node/index.d.ts"
-  ],
   "include": [
-    "src/**/*.ts"
+    "src/main/**/*.ts"
   ],
   "exclude": [
     "node_modules"

@@ -1,10 +1,10 @@
+import App from "@app/App";
+import { StateSupplier } from "@app/di/suppliers";
+import { Scenario } from "@app/domains";
+import { ISupplier } from "@app/interfaces";
+import { JSONMap } from "@app/utils";
 import { Router } from "express";
 import { BehaviorSubject, Subject } from "rxjs";
-import App from "../../App";
-import { Scenario } from "../../domains/Scenario";
-import { ISupplier } from "../../interfaces/ISupplier";
-import { JSONMap } from "../../utils/JSONMap";
-import { StateSupplier } from "./StateSupplier";
 
 export class ScenarioSupplier implements ISupplier<Scenario> {
 

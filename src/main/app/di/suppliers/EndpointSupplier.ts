@@ -1,8 +1,6 @@
-import { Endpoint } from "../../domains/Endpoint";
-import { Scenario } from "../../domains/Scenario";
-import { ISupplier } from "../../interfaces/ISupplier";
-import { ActionSupplier } from "./ActionSupplier";
-import { ResponseSupplier } from "./ResponseSupplier";
+import { ActionSupplier, ResponseSupplier } from "@app/di/suppliers";
+import { Endpoint, Scenario } from "@app/domains";
+import { ISupplier } from "@app/interfaces";
 
 export class EndpointSupplier implements ISupplier<Endpoint> {
 

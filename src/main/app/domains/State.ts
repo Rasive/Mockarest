@@ -1,5 +1,5 @@
+import { Endpoint } from "@app/domains";
 import { Router } from "express";
-import { Endpoint } from "./Endpoint";
 
 export class State {
 
