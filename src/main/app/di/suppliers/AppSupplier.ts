@@ -1,4 +1,4 @@
-import App from "@app/App";
+import { App } from "@app/App";
 import { ScenarioSupplier } from "@app/di/suppliers";
 import { ISupplier } from "@app/interfaces";
 import * as express from "express";

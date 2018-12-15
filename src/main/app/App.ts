@@ -4,7 +4,7 @@ import * as Express from "express";
 import { Router } from "express";
 import { Subject } from "rxjs";
 
-export default class App {
+export class App {
 
     constructor(
         public readonly port: number,

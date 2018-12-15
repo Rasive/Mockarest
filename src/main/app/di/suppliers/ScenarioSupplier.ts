@@ -1,4 +1,4 @@
-import App from "@app/App";
+import { App } from "@app/App";
 import { StateSupplier } from "@app/di/suppliers";
 import { Scenario } from "@app/domains";
 import { ISupplier } from "@app/interfaces";
