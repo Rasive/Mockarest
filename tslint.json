@@ -16,7 +16,7 @@
         "indent": true,
         "newline-before-return": true,
         "interface-name": true,
-        "completed-docs": true,
+        "completed-docs": false,
         "eofline": true,
         "jsdoc-format": true,
         "member-ordering": true,
