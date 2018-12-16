@@ -8,7 +8,7 @@ export interface IAction {
     /**
      * Goto state after hitting the endpoint
      *
-     * @pattern ^[at]states\/w+$
+     * @pattern ^[at]states\/\w+$
      */
     goto: string;
 

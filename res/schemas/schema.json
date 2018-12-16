@@ -87,7 +87,7 @@
                 },
                 "goto": {
                     "description": "Goto state after hitting the endpoint",
-                    "pattern": "^@states\\/w+$",
+                    "pattern": "^@states\\/\\w+$",
                     "type": "string"
                 }
             }

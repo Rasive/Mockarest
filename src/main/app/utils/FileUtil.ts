@@ -3,12 +3,12 @@ import * as path from "path";
 
 export class FileUtil {
 
-    public static loadScenario(scnearioFileName): any {
-        if (!scnearioFileName) {
+    public static loadJSON(filename): any {
+        if (!filename) {
             return undefined;
         }
 
-        return JSON.parse(fs.readFileSync(path.resolve(scnearioFileName), "utf8").toString());
+        return JSON.parse(fs.readFileSync(path.resolve(filename), "utf8").toString());
     }
 
 }
