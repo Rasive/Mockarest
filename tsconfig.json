@@ -4,7 +4,6 @@
     "module": "commonjs",
     "moduleResolution": "node",
     "experimentalDecorators": true,
-    "outDir": "dist",
     "rootDir": "./",
     "sourceMap": true,
     "baseUrl": "./src",
