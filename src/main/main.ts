@@ -1,5 +1,6 @@
 import { AppModule } from "@app/di/modules";
 import { FileUtil } from "@app/utils";
+import * as ajv from "ajv";
 import * as minimist from "minimist";
 
 let args: minimist.ParsedArgs;
@@ -15,6 +16,8 @@ if (!args["load-scenario"] || typeof args["load-scenario"] !== "string") {
 }
 
 const json = FileUtil.loadScenario(args["load-scenario"]);
+const AJV = ajv();
+
 const port = 8080;
 
 const appModule = new AppModule(port, json);

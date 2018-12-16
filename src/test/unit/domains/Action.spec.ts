@@ -1,8 +1,7 @@
-import * as Chai from "chai";
+import { Action } from "@app/domains";
 import { BehaviorSubject, Subject } from "rxjs";
 import * as SafeEval from "safe-eval";
 import { IMock, It, Mock, Times } from "typemoq";
-import { Action } from "../../../main/app/domains/Action";
 
 describe("Action", () => {
     context("execute", () => {

@@ -1,0 +1,21 @@
+language: node_js
+
+node_js:
+  - "11"
+
+branches:
+  only:
+    - master
+    - develop
+
+install:
+  - npm install
+
+script:
+  ./node_modules/.bin/gulp lint
+  ./node_modules/.bin/gulp build
+  ./node_modules/.bin/gulp test
+
+cache:
+  directories:
+    - node_modules
