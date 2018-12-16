@@ -1,5 +1,5 @@
 import { AppModule } from "@app/di/modules";
-import { FileUtil } from "@app/utils";
+import { FileUtil, Log } from "@app/utils";
 import * as ajv from "ajv";
 import * as minimist from "minimist";
 
@@ -15,12 +15,19 @@ if (!args["load-scenario"] || typeof args["load-scenario"] !== "string") {
     throw new Error("Missing argument: --load-scenario <path>");
 }
 
-const json = FileUtil.loadScenario(args["load-scenario"]);
+const json = FileUtil.loadJSON(args["load-scenario"]);
+const jsonSchema = FileUtil.loadJSON("./res/schemas/schema.json");
 const AJV = ajv();
 
-const port = 8080;
+const validationResult = AJV.validate(jsonSchema, json);
 
-const appModule = new AppModule(port, json);
-const app = appModule.build();
+if (validationResult) {
+    const port = 8080;
 
-app.run();
+    const appModule = new AppModule(port, json);
+    const app = appModule.build();
+
+    app.run();
+} else {
+    Log.error(AJV.errors);
+}
