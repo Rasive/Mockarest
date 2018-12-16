@@ -6,7 +6,10 @@
             "id": "state_1",
             "endpoints": [
                 {
-                    "method": "GET|POST",
+                    "method": [
+                        "GET",
+                        "POST"
+                    ],
                     "path": "^/hello|hi/[a-z]+$",
                     "response": {
                         "delay": 1000,
@@ -27,7 +30,9 @@
             "id": "state_2",
             "endpoints": [
                 {
-                    "method": "GET",
+                    "method": [
+                        "GET"
+                    ],
                     "path": "/hello",
                     "response": {
                         "statusCode": 200,
