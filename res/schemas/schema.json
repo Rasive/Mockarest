@@ -1,0 +1,97 @@
+{
+    "type": "object",
+    "properties": {
+        "name": {
+            "description": "The name of the scenario",
+            "type": "string"
+        },
+        "description": {
+            "description": "A short description for the scenario",
+            "type": "string"
+        },
+        "states": {
+            "description": "All possibly states the scenario is supposed to have",
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/IState"
+            }
+        }
+    },
+    "definitions": {
+        "IState": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "description": "The id of the state, this can be referred to in the action of the endpoint",
+                    "type": "string"
+                },
+                "endpoints": {
+                    "description": "Endpoints which this state has",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/IEndpoint"
+                    }
+                }
+            }
+        },
+        "IEndpoint": {
+            "type": "object",
+            "properties": {
+                "method": {
+                    "description": "The http method to expect, can be more than one",
+                    "minItems": 1,
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "path": {
+                    "description": "The path to match on, can be a regular expression",
+                    "type": "string"
+                },
+                "response": {
+                    "$ref": "#/definitions/IResponse",
+                    "description": "The response to send"
+                },
+                "action": {
+                    "$ref": "#/definitions/IAction",
+                    "description": "The action to take after hitting the endpoint"
+                }
+            }
+        },
+        "IResponse": {
+            "type": "object",
+            "properties": {
+                "delay": {
+                    "description": "The delay in ms before replying",
+                    "type": "integer"
+                },
+                "statusCode": {
+                    "description": "The status code of the response",
+                    "type": "integer"
+                },
+                "header": {
+                    "description": "Pass along a header in a key val form",
+                    "type": "object",
+                    "properties": {},
+                    "additionalProperties": true
+                }
+            }
+        },
+        "IAction": {
+            "type": "object",
+            "properties": {
+                "precondition": {
+                    "description": "Precondition for when to execute the goto statement",
+                    "type": "string"
+                },
+                "goto": {
+                    "description": "Goto state after hitting the endpoint",
+                    "pattern": "^[at]states\\/w+$",
+                    "type": "string"
+                }
+            }
+        }
+    },
+    "$schema": "http://json-schema.org/draft-07/schema#"
+}
