@@ -1,7 +1,8 @@
+import { IAction } from "@app/interfaces";
 import { Subject } from "rxjs";
 import * as SafeEval from "safe-eval";
 
-export class Action {
+export class Action implements IAction {
 
     public precondition: string;
     public goto: string;

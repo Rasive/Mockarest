@@ -1,7 +1,8 @@
 import { Endpoint } from "@app/domains";
+import { IState } from "@app/interfaces";
 import { Router } from "express";
 
-export class State {
+export class State implements IState {
 
     public id: string;
     public endpoints: Endpoint[];

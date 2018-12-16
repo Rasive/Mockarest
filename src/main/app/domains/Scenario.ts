@@ -1,8 +1,9 @@
 import { State } from "@app/domains";
+import { IScenario } from "@app/interfaces";
 import { Router } from "express";
 import { Subject } from "rxjs";
 
-export class Scenario {
+export class Scenario implements IScenario {
 
     constructor(
         public readonly activeStateSubject: Subject<string>,

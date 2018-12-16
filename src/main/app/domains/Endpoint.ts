@@ -1,10 +1,11 @@
 import { Action } from "@app/domains";
 import { Response } from "@app/domains";
+import { IEndpoint } from "@app/interfaces";
 import * as Express from "express";
 
-export class Endpoint {
+export class Endpoint implements IEndpoint {
 
-    public method: string;
+    public method: string[];
     public path: string;
     public response: Response;
     public action: Action;
