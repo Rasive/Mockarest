@@ -1,10 +1,6 @@
-// tslint:disable-next-line:no-var-requires
-require("module-alias/register");
-
 import { AppModule } from "@app/di/modules";
 import { FileUtil } from "@app/utils";
 import * as minimist from "minimist";
-import * as ma from "module-alias/register";
 
 let args: minimist.ParsedArgs;
 
