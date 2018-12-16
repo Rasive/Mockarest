@@ -2,7 +2,7 @@ import { App } from "@app/App";
 import { StateSupplier } from "@app/di/suppliers";
 import { Scenario } from "@app/domains";
 import { ISupplier } from "@app/interfaces";
-import { JSONMap } from "@app/utils";
+import { JSON } from "@app/utils";
 import { Router } from "express";
 import { BehaviorSubject, Subject } from "rxjs";
 
@@ -21,7 +21,7 @@ export class ScenarioSupplier implements ISupplier<Scenario> {
         const scenario = this.create(app.activeRouterSubject);
         scenario.name = json.name;
         scenario.description = json.description;
-        scenario.states = JSONMap.map(json.states, (stateJson) =>
+        scenario.states = JSON.map(json.states, (stateJson) =>
             this._stateSupplier.createFromJSON(stateJson, scenario, app));
 
         return scenario;

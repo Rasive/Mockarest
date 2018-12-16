@@ -1,3 +1,3 @@
 export { FileUtil } from "@app/utils/FileUtil";
-export { JSONMap } from "@app/utils/JSONMap";
+export { JSON } from "@app/utils/JSON";
 export { Log } from "@app/utils/Log";
