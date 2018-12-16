@@ -83,3 +83,5 @@ gulp.task("gen:schema", (done) => {
 
     fs.writeFile("./res/schemas/schema.json", schemaStr, null, done);
 });
+
+gulp.task("travis", gulp.series("lint", "build", "test"));
