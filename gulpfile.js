@@ -1,6 +1,5 @@
 var gulp = require("gulp");
 var ts = require("gulp-typescript");
-var typescript = require("typescript");
 var upath = require("upath");
 var tjs = require("typescript-json-schema");
 var tap = require("gulp-tap");
@@ -37,6 +36,7 @@ gulp.task("gen:schema", (done) => {
     var settings = {};
     var program = tjs.getProgramFromFiles(["./src/main/app/interfaces/index.ts"], compilerOptions);
     var schema = tjs.generateSchema(program, "IScenario", settings);
+    var schemaStr = JSON.stringify(schema, null, 4).replace(/\[at\]/g, "@");
 
-    fs.writeFile("./res/schemas/schema.json", JSON.stringify(schema, null, 4), null, done);
+    fs.writeFile("./res/schemas/schema.json", schemaStr, null, done);
 });
