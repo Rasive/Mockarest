@@ -4,10 +4,11 @@ import * as SafeEval from "safe-eval";
 import { IMock, It, Mock, Times } from "typemoq";
 
 describe("Action", () => {
+
     context("execute", () => {
         it("should run SafeEval when precondition and goto is set", () => {
             // arrange
-            const safeEvalMock = Mock.ofInstance<(string, any) => any>((string, any) => any);
+            const safeEvalMock = Mock.ofInstance<(string, any) => any>((string, any) => It.isAny());
 
             const action = new Action(
                 It.isAnyObject(undefined),
@@ -21,7 +22,7 @@ describe("Action", () => {
 
             // assert
             safeEvalMock.verify((x) =>
-                x("true == true", It.isAny()), Times.once());
+                x(It.isAnyString(), It.isAny()), Times.once());
         });
 
         it("should run Subject::next when goto is set", () => {
@@ -39,4 +40,5 @@ describe("Action", () => {
             subjectMock.verify((x) => x.next(It.isAnyString()), Times.atLeastOnce());
         });
     });
+
 });
