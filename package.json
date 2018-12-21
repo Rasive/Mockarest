@@ -4,7 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "build": "node ./node_modules/typescript/tsc",
+    "build": "node ./node_modules/typescript/bin/tsc",
     "lint": "node ./node_modules/tslint/bin/tslint --project ./tslint.json",
     "test": "node ./node_modules/mocha/bin/_mocha -r ./node_modules/ts-node/register -r ./node_modules/tsconfig-paths/register ./src/test/**/*.spec.ts",
     "start": "node -r ./node_modules/ts-node/register -r ./node_modules/tsconfig-paths/register ./src/main/main.ts --load-scenario ./res/scenarios/scenario-1.json"
