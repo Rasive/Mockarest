@@ -9,7 +9,7 @@ branches:
     - develop
 
 install:
-  - npm install
+  - npm ci
 
 env:
   - NODE_ENV=production
