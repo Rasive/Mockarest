@@ -1,6 +1,3 @@
-// tslint:disable-next-line:no-var-requires
-require("module-alias/register");
-
 export { IModule } from "@app/interfaces/IModule";
 export { ISupplier } from "@app/interfaces/ISupplier";
 export { IAction } from "@app/interfaces/IAction";

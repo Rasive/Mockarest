@@ -7,7 +7,7 @@ import { BehaviorSubject } from "rxjs";
 
 export class AppSupplier implements ISupplier<App> {
 
-    constructor(private _scenarioSupplier: ScenarioSupplier) { }
+    constructor(private readonly _scenarioSupplier: ScenarioSupplier) { }
 
     public create(port: number): App {
         const expressApp = express();

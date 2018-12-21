@@ -7,8 +7,8 @@ import {
 export class AppModule {
 
     constructor(
-        private _port: number,
-        private _json: any) { }
+        private readonly _port: number,
+        private readonly _json: any) { }
 
     public build(): App {
         const actionSupplier = new ActionSupplier();
