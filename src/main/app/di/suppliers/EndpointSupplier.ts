@@ -5,8 +5,8 @@ import { ISupplier } from "@app/interfaces";
 export class EndpointSupplier implements ISupplier<Endpoint> {
 
     constructor(
-        private _responseSupplier: ResponseSupplier,
-        private _actionSupplier: ActionSupplier) { }
+        private readonly _responseSupplier: ResponseSupplier,
+        private readonly _actionSupplier: ActionSupplier) { }
 
     public create(): Endpoint {
         return new Endpoint();

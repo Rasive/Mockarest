@@ -6,7 +6,7 @@
     "experimentalDecorators": true,
     "rootDir": "./",
     "sourceMap": true,
-    "baseUrl": "./src",
+    "baseUrl": "./src/",
     "paths": {
       "@app/*": [
         "main/app/*"

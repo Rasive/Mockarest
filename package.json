@@ -4,16 +4,13 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "build": "tsc",
-    "lint": "./node_modules/.bin/tslint --project .",
-    "test": "./node_modules/.bin/mocha -r ts-node/register src/test/**/*.spec.ts",
-    "start": "./node_modules/.bin/ts-node ./src/main/main.ts"
+    "build": "node ./node_modules/typescript/bin/tsc",
+    "lint": "node ./node_modules/tslint/bin/tslint --project ./tslint.json",
+    "test": "node ./node_modules/mocha/bin/_mocha -r ./node_modules/ts-node/register -r ./node_modules/tsconfig-paths/register ./src/test/**/*.spec.ts",
+    "start": "node -r ./node_modules/ts-node/register -r ./node_modules/tsconfig-paths/register ./src/main/main.ts --load-scenario ./res/scenarios/scenario-1.json"
   },
   "author": "Rasmus Zweidorff Iversen",
   "license": "ISC",
-  "_moduleAliases": {
-    "@app": "./dist/src/main/app"
-  },
   "devDependencies": {
     "@types/ajv": "^1.0.0",
     "@types/chai": "^4.1.7",
@@ -34,6 +31,7 @@
     "mocha": "^5.2.0",
     "replace-in-file": "^3.4.2",
     "ts-node": "^7.0.1",
+    "tsconfig-paths": "^3.7.0",
     "tslint": "^5.11.0",
     "typemoq": "^2.1.0",
     "typescript-json-schema": "^0.33.0",
