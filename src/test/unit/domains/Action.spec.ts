@@ -13,7 +13,7 @@ describe("Action", () => {
                 It.isAnyObject(undefined),
                 safeEvalMock.object);
 
-            action.precondition = "true == true";
+            action.precondition = It.isAnyString();
             action.goto = It.isAnyString();
 
             // act
@@ -21,7 +21,7 @@ describe("Action", () => {
 
             // assert
             safeEvalMock.verify((x) =>
-                x("true == true", It.isAny()), Times.once());
+                x.call(It.isAnyString(), It.isAny()), Times.once());
         });
 
         it("should run Subject::next when goto is set", () => {
