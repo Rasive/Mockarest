@@ -11,8 +11,13 @@ branches:
 install:
   - npm install
 
+env:
+  - NODE_ENV=production
+
 script:
-  ./node_modules/.bin/gulp travis
+  - npm lint
+  - npm build
+  - npm test
 
 cache:
   directories:
