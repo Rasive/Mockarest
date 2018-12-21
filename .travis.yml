@@ -11,10 +11,11 @@ branches:
 install:
   - npm install
 
-env:
-  - NODE_ENV=production
-
 script:
   - npm run lint
   - npm run build
   - npm run test
+
+cache:
+  directories:
+    - node_modules
