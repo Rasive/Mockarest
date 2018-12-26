@@ -20,8 +20,7 @@
                 "999999",
                 "--colors",
                 "${workspaceFolder}/src/test/**/*.spec.ts"
-            ],
-            "internalConsoleOptions": "openOnSessionStart"
+            ]
         },
         {
             "type": "node",
