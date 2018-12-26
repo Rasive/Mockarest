@@ -25,4 +25,18 @@ describe("Endpoint", () => {
             routerMock.verify((x) => x.delete(It.isAnyString(), It.isAny()), Times.once());
         });
     });
+
+    context("reset", () => {
+        it("should set callCount to zero when called", () => {
+            // arrange
+            const endpoint = new Endpoint();
+            endpoint.callCount = 9;
+
+            // act
+            endpoint.reset();
+
+            // assert
+            expect(endpoint.callCount).to.equal(0);
+        });
+    });
 });
