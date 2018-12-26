@@ -1,11 +1,11 @@
 import { Endpoint } from "@app/domains";
-import { IState } from "@app/interfaces";
+import { IState, IEndpoint } from "@app/interfaces";
 import { Router } from "express";
 
 export class State implements IState {
 
     public id: string;
-    public endpoints: Endpoint[];
+    public endpoints: IEndpoint[];
     public callCount = 0;
 
     private _router: Router;
@@ -18,13 +18,18 @@ export class State implements IState {
         }
 
         this._router = Router();
-        this.endpoints.forEach((endpoint: Endpoint) => endpoint.process(this._router));
+
+        if (this.endpoints) {
+            this.endpoints.forEach((endpoint: IEndpoint) => endpoint.process(this._router));
+        }
 
         return this._router;
     }
 
     public reset(): void {
-        this.endpoints.forEach((endpoint: Endpoint) => endpoint.reset());
+        if (this.endpoints) {
+            this.endpoints.forEach((endpoint: IEndpoint) => endpoint.reset());
+        }
     }
 
 }

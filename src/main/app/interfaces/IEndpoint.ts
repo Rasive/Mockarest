@@ -1,7 +1,12 @@
 import { IResponse } from "@app/interfaces";
 import { IAction } from "./IAction";
+import { Router } from "express";
 
 export interface IEndpoint {
+    
+    reset(): void;
+
+    process(_router: Router): void;
 
     /**
      * The http method to expect, can be more than one

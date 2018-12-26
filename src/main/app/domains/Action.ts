@@ -1,6 +1,6 @@
 import { IAction } from "@app/interfaces";
 import { Subject } from "rxjs";
-import * as SafeEval from "safe-eval";
+import { SafeEval } from "@app/utils";
 
 export class Action implements IAction {
 
@@ -13,14 +13,21 @@ export class Action implements IAction {
 
     public execute(vars: any): void {
         if (this.precondition && this.goto) {
-            const result = this._safeEval.call(this.precondition, vars);
+            const result = this._safeEval.execute(this.precondition, vars);
 
             if (result) {
-                this._activeStateSubject.next(this.goto);
+                this.publishNextState(this.goto);
             }
         } else if (this.goto) {
-            this._activeStateSubject.next(this.goto);
+            this.publishNextState(this.goto);
         }
+    }
+
+    private publishNextState(stateid: string) {
+        if (!this._activeStateSubject ||
+            !this._activeStateSubject) { return }
+
+        this._activeStateSubject.next(stateid);
     }
 
 }
