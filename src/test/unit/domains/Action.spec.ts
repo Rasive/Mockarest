@@ -1,7 +1,7 @@
 import { Action } from "@app/domains";
-import { mock, verify, instance, anything, anyString } from "ts-mockito";
 import { SafeEval } from "@app/utils";
 import { Subject } from "rxjs";
+import { anyString, anything, instance, mock, verify } from "ts-mockito";
 
 describe("Action", () => {
     context("execute", () => {
