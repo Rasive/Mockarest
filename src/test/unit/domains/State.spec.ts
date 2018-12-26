@@ -1,71 +1,72 @@
-import { State } from "@app/domains";
+import { Endpoint, State } from "@app/domains";
 import { expect } from "chai";
-import Substitute from "@fluffy-spoon/substitute";
-import { IEndpoint } from "@app/interfaces";
+import { Router } from "express";
+import { anything, instance, mock, spy, verify } from "ts-mockito";
 
 describe("State", () => {
     context("fetchRouter", () => {
         it("should return a router instance when called", () => {
-            // arrange
+            // given
             const state = new State();
 
-            // act
+            // when
             const router = state.fetchRouter();
 
-            // assert
+            // then
             expect(router).to.not.be.undefined;
         });
 
         it("should return a new router instance when called with rebuild set to true", () => {
-            // arrange
+            // given
             const state = new State();
             const router = state.fetchRouter();
 
-            // act
+            // when
             const newRouter = state.fetchRouter(true);
 
-            // assert
+            // then
             expect(newRouter).to.not.equal(router);
         });
 
-        it("should return a router instance and call reset when called with reset set to true", () => {
-            // arrange
-            const state = Substitute.for<State>();
-            state.mimick(new State());
+        it("should reset the router when called with reset set to true", () => {
+            // given
+            const state = new State();
+            state.router = mock(Router);
+            const stateSpy = spy(state);
 
-            // act
-            state.fetchRouter();
+            // when
+            state.fetchRouter(false, true);
 
-            // assert
-            state.received().reset();
+            // then
+            verify(stateSpy.reset()).once();
         });
 
         it("should call endpoint::process with a new router instance, when called", () => {
-            // arrange
-            const endpoint = Substitute.for<IEndpoint>();
+            // given
+            const endpointMock = mock(Endpoint);
             const state = new State();
-            state.endpoints = [endpoint];
+            state.endpoints = [instance(endpointMock)];
 
-            // act
+            // when
             const router = state.fetchRouter();
 
-            // assert
-            endpoint.received().process(router);
-        })
+            // then
+            verify(endpointMock.process(anything())).once();
+        });
     });
 
     context("reset", () => {
         it("should call endpoint::reset when called", () => {
-            // arrange
-            const endpoint = Substitute.for<IEndpoint>();
+            // given
+            const endpointMock = mock(Endpoint);
             const state = new State();
-            state.endpoints = [endpoint];
+            state.endpoints = [instance(endpointMock)];
 
-            // act
+            // when
             state.reset();
 
-            // assert
-            endpoint.received().reset();
+            // then
+            verify(endpointMock.reset()).once();
         });
     });
 });
