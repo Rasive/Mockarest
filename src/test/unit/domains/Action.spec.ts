@@ -1,42 +1,42 @@
 import { Action } from "@app/domains";
-import { BehaviorSubject, Subject } from "rxjs";
-import * as SafeEval from "safe-eval";
-import { IMock, It, Mock, Times } from "typemoq";
+import { mock, verify, instance, anything, anyString } from "ts-mockito";
+import { SafeEval } from "@app/utils";
+import { Subject } from "rxjs";
 
 describe("Action", () => {
     context("execute", () => {
         it("should run SafeEval when precondition and goto is set", () => {
-            // arrange
-            const safeEvalMock = Mock.ofInstance<(string, any) => any>((string, any) => any);
+            // given
+            const precondition = "1 == 1";
+            const _goto = "something";
+            const safeEvalMock = mock(SafeEval);
+            const action = new Action(null, instance(safeEvalMock));
+            action.precondition = precondition;
+            action.goto = _goto;
+            const vars = {};
 
-            const action = new Action(
-                It.isAnyObject(undefined),
-                safeEvalMock.object);
+            // when
+            action.execute(vars);
 
-            action.precondition = It.isAnyString();
-            action.goto = It.isAnyString();
-
-            // act
-            action.execute(It.isAny());
-
-            // assert
-            safeEvalMock.verify((x) =>
-                x.call(It.isAnyString(), It.isAny()), Times.once());
+            // then
+            verify(safeEvalMock.execute(anyString(), anything())).once();
         });
 
         it("should run Subject::next when goto is set", () => {
-            // arrange
-            const subjectMock = Mock.ofType<Subject<string>>();
-            const action = new Action(
-                subjectMock.object,
-                It.isAnyObject(undefined));
-            action.goto = "abc";
+            // given
+            const _goto = "something";
+            const precondition = null;
+            const activeStateSubjectMock = mock(Subject);
+            const action = new Action(instance(activeStateSubjectMock), null);
+            action.goto = _goto;
+            action.precondition = precondition;
+            const vars = {};
 
-            // act
-            action.execute(It.isAny());
+            // when
+            action.execute(vars);
 
-            // assert
-            subjectMock.verify((x) => x.next(It.isAnyString()), Times.atLeastOnce());
+            // then
+            verify(activeStateSubjectMock.next(anything())).once();
         });
     });
 });
