@@ -1,8 +1,11 @@
 {
     "defaultSeverity": "error",
-    "extends": [
-        "tslint:recommended"
-    ],
+    "linterOptions": {
+        "exclude": [
+            "node_modules/**"
+        ]
+    },
+    "extends": "tslint:recommended",
     "jsRules": {},
     "rules": {
         "prefer-const": true,

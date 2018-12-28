@@ -9,7 +9,7 @@ import { BehaviorSubject, Subject } from "rxjs";
 export class ScenarioSupplier implements ISupplier<Scenario> {
 
     constructor(
-        private _stateSupplier: StateSupplier) { }
+        private readonly _stateSupplier: StateSupplier) { }
 
     public create(activeRouterSubject: Subject<Router>): Scenario {
         const activeStateSubject = new BehaviorSubject<string>(undefined);

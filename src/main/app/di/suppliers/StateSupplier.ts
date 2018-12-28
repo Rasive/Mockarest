@@ -6,7 +6,7 @@ import { JSON } from "@app/utils";
 
 export class StateSupplier implements ISupplier<State> {
 
-    constructor(private _endpointSupplier: EndpointSupplier) { }
+    constructor(private readonly _endpointSupplier: EndpointSupplier) { }
 
     public create(): State {
         return new State();
