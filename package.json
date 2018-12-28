@@ -21,6 +21,7 @@
     "@types/node": "^10.12.12",
     "@types/rx": "^4.1.1",
     "chai": "^4.2.0",
+    "codecov": "^3.1.0",
     "gulp": "^4.0.0",
     "gulp-clean": "^0.4.0",
     "gulp-cli": "^2.0.1",
