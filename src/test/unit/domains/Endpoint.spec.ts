@@ -1,42 +1,43 @@
 import { Endpoint } from "@app/domains";
 import { expect } from "chai";
 import { Request, Response, Router } from "express";
-import { IMock, It, Mock, Times } from "typemoq";
+import { anyString, anything, spy, verify } from "ts-mockito";
 
 describe("Endpoint", () => {
     context("process", () => {
         it("should setup GET, POST, PUT, PATCH and DELETE for router", () => {
-            // arange
-            const routerMock = Mock.ofType<Router>();
+            // given
+            const router = Router();
+            const routerSpy = spy(router);
             const endpoint = new Endpoint();
-            const fn = (req: Request, res: Response) => void (0);
+            const fn = (req: Request, res: Response) => anything();
 
             endpoint.method = ["GET", "POST", "PUT", "PATCH", "DELETE"];
             endpoint.path = "/some/path";
 
-            // act
-            endpoint.process(routerMock.object);
+            // when
+            endpoint.process(router);
 
-            // assert
-            routerMock.verify((x) => x.get(It.isAnyString(), It.isAny()), Times.once());
-            routerMock.verify((x) => x.post(It.isAnyString(), It.isAny()), Times.once());
-            routerMock.verify((x) => x.put(It.isAnyString(), It.isAny()), Times.once());
-            routerMock.verify((x) => x.patch(It.isAnyString(), It.isAny()), Times.once());
-            routerMock.verify((x) => x.delete(It.isAnyString(), It.isAny()), Times.once());
+            // then
+            verify(routerSpy.get(anyString(), anything())).once();
+            verify(routerSpy.post(anyString(), anything())).once();
+            verify(routerSpy.put(anyString(), anything())).once();
+            verify(routerSpy.patch(anyString(), anything())).once();
+            verify(routerSpy.delete(anyString(), anything())).once();
         });
     });
 
     context("reset", () => {
         it("should set callCount to zero when called", () => {
-            // arrange
+            // given
             const endpoint = new Endpoint();
             endpoint.callCount = 9;
 
-            // act
+            // when
             endpoint.reset();
 
-            // assert
-            expect(endpoint.callCount).to.equal(0);
+            // then
+            expect(endpoint.callCount).to.be.equal(0);
         });
     });
 });
