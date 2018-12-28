@@ -1,6 +1,6 @@
 import { IAction } from "@app/interfaces";
-import { Subject } from "rxjs";
 import { SafeEval } from "@app/utils";
+import { Subject } from "rxjs";
 
 export class Action implements IAction {
 
@@ -25,7 +25,7 @@ export class Action implements IAction {
 
     private publishNextState(stateid: string) {
         if (!this._activeStateSubject ||
-            !this._activeStateSubject) { return }
+            !this._activeStateSubject) { return; }
 
         this._activeStateSubject.next(stateid);
     }

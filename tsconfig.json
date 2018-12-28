@@ -7,6 +7,16 @@
     "rootDir": "./",
     "sourceMap": true,
     "baseUrl": "./src/",
+    "plugins": [
+      {
+        "name": "typescript-tslint-plugin",
+        "alwaysShowRuleFailuresAsWarnings": false,
+        "ignoreDefinitionFiles": true,
+        "configFile": "./tslint.json",
+        "suppressWhileTypeErrorsPresent": false,
+        "mockTypeScriptVersion": false
+      }
+    ],
     "paths": {
       "@app/*": [
         "main/app/*"
@@ -17,6 +27,6 @@
     "src/**/*.ts"
   ],
   "exclude": [
-    "node_modules"
+    "node_modules/**"
   ]
 }

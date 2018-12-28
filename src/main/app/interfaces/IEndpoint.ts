@@ -1,9 +1,9 @@
 import { IResponse } from "@app/interfaces";
-import { IAction } from "./IAction";
 import { Router } from "express";
+import { IAction } from "./IAction";
 
 export interface IEndpoint {
-    
+
     reset(): void;
 
     process(_router: Router): void;

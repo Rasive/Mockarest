@@ -1,7 +1,7 @@
 import { IEndpoint } from "@app/interfaces";
 
 export interface IState {
-    
+
     fetchRouter(): any;
 
     /**
