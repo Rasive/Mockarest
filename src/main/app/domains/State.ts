@@ -1,30 +1,36 @@
-import { Endpoint } from "@app/domains";
-import { IState } from "@app/interfaces";
+import { IEndpoint, IState } from "@app/interfaces";
 import { Router } from "express";
 
 export class State implements IState {
 
     public id: string;
-    public endpoints: Endpoint[];
+    public endpoints: IEndpoint[];
     public callCount = 0;
 
-    private _router: Router;
+    public router: Router;
 
     public fetchRouter(rebuild: boolean = false, reset: boolean = true): Router {
-        if (this._router && !rebuild) {
-            if (reset) { this.reset(); }
+        if (this.router && !rebuild) {
+            if (reset) {
+                this.reset();
+            }
 
-            return this._router;
+            return this.router;
         }
 
-        this._router = Router();
-        this.endpoints.forEach((endpoint: Endpoint) => endpoint.process(this._router));
+        this.router = Router();
 
-        return this._router;
+        if (this.endpoints) {
+            this.endpoints.forEach((endpoint: IEndpoint) => endpoint.process(this.router));
+        }
+
+        return this.router;
     }
 
     public reset(): void {
-        this.endpoints.forEach((endpoint: Endpoint) => endpoint.reset());
+        if (this.endpoints) {
+            this.endpoints.forEach((endpoint: IEndpoint) => endpoint.reset());
+        }
     }
 
 }
