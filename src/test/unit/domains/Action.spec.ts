@@ -4,6 +4,7 @@ import { Subject } from "rxjs";
 import { anyString, anything, instance, mock, verify } from "ts-mockito";
 
 describe("Action", () => {
+
     context("execute", () => {
         it("should run SafeEval when precondition and goto is set", () => {
             // given
@@ -39,4 +40,5 @@ describe("Action", () => {
             verify(activeStateSubjectMock.next(anything())).once();
         });
     });
+
 });
