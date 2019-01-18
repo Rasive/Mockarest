@@ -13,8 +13,11 @@ export class ActionSupplier implements ISupplier<Action> {
 
     public createFromJSON(json: any, scenario: Scenario): Action {
         const action = this.create(scenario.activeStateSubject);
-        action.precondition = json.precondition;
-        action.goto = json.goto;
+
+        if (json) {
+            action.precondition = json.precondition;
+            action.goto = json.goto;
+        }
 
         return action;
     }
