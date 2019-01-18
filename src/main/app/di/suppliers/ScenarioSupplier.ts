@@ -19,10 +19,13 @@ export class ScenarioSupplier implements ISupplier<Scenario> {
 
     public createFromJSON(json: any, app: App): Scenario {
         const scenario = this.create(app.activeRouterSubject);
-        scenario.name = json.name;
-        scenario.description = json.description;
-        scenario.states = JSON.map(json.states, (stateJson) =>
-            this._stateSupplier.createFromJSON(stateJson, scenario, app));
+
+        if (json) {
+            scenario.name = json.name;
+            scenario.description = json.description;
+            scenario.states = JSON.map(json.states, (stateJson) =>
+                this._stateSupplier.createFromJSON(stateJson, scenario, app));
+        }
 
         return scenario;
     }
