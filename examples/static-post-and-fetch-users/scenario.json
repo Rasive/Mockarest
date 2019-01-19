@@ -1,0 +1,71 @@
+{
+    "name": "Static post and fetch users",
+    "description": "Do a static post of users, and afterwards fetch all users from an endpoint",
+    "states": [
+        {
+            "id": "state_1",
+            "endpoints": [
+                {
+                    "method": [
+                        "GET"
+                    ],
+                    "path": "^/users$",
+                    "response": {
+                        "statusCode": 200,
+                        "header": {
+                            "Content-Type": "application/json"
+                        },
+                        "body": [
+                            {
+                                "id": 1,
+                                "name": "Jens Jensen",
+                                "dob": "1988-02-06"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "method": [
+                        "POST"
+                    ],
+                    "path": "^/users$",
+                    "response": {
+                        "statusCode": 200
+                    },
+                    "action": {
+                        "goto": "@states/state_2"
+                    }
+                }
+            ]
+        },
+        {
+            "id": "state_2",
+            "endpoints": [
+                {
+                    "method": [
+                        "GET"
+                    ],
+                    "path": "^/users$",
+                    "response": {
+                        "statusCode": 200,
+                        "header": {
+                            "Content-Type": "application/json"
+                        },
+                        "body": [
+                            {
+                                "id": 1,
+                                "name": "Jens Jensen",
+                                "dob": "1988-02-06"
+                            },
+                            {
+                                "id": 2,
+                                "name": "Hans Hansen",
+                                "dob": "1985-10-12"
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
+    ]
+}

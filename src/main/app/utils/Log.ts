@@ -9,4 +9,7 @@ export class Log {
     // tslint:disable-next-line:no-console
     public static error = console.error;
 
+    // tslint:disable-next-line: no-console
+    public static warning = console.log;
+
 }
