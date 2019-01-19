@@ -34,7 +34,7 @@ const requestPromised = (options: request.Options): Promise<request.Response> =>
 
 const baseurl = "http://localhost:8080";
 
-describe("Examples", () => {
+describe.skip("Examples", () => {
     context("static-post-and-fetch-users", () => {
         it("Should start", async () => {
             // given
