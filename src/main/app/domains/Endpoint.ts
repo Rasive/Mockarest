@@ -1,6 +1,7 @@
 import { Action } from "@app/domains";
 import { Response } from "@app/domains";
 import { IEndpoint } from "@app/interfaces";
+import { Log } from "@app/utils";
 import * as Express from "express";
 
 export class Endpoint implements IEndpoint {
@@ -14,6 +15,7 @@ export class Endpoint implements IEndpoint {
 
     public process(router: Express.Router): void {
         const processMethod = (req: Express.Request, res: Express.Response) => {
+            Log.verbose("Hit endpoint:", req.method, req.path);
             setTimeout(() => {
                 res
                     .status(this.response.statusCode)

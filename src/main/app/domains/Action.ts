@@ -7,6 +7,8 @@ export class Action implements IAction {
     public precondition: string;
     public goto: string;
 
+    private readonly _stateIdPattern: RegExp = new RegExp(/@states\/(\w+)/);
+
     constructor(
         private readonly _activeStateSubject: Subject<string>,
         private readonly _safeEval: SafeEval) { }
@@ -24,8 +26,12 @@ export class Action implements IAction {
     }
 
     private publishNextState(stateid: string) {
-        if (!this._activeStateSubject ||
-            !this._activeStateSubject) { return; }
+        if (!this._activeStateSubject) { return; }
+
+        const matches = stateid.match(this._stateIdPattern);
+        if (matches && matches.length > 0) {
+            stateid = matches[1];
+        }
 
         this._activeStateSubject.next(stateid);
     }

@@ -10,7 +10,7 @@
     "rules": {
         "prefer-const": true,
         "arrow-return-shorthand": true,
-        "await-promise": true,
+        "await-promise": false,
         "align": true,
         "class-name": true,
         "deprecation": true,
@@ -30,6 +30,7 @@
         "no-reference": true,
         "only-arrow-functions": true,
         "prefer-readonly": true,
+        "object-literal-sort-keys": false,
         "radix": true,
         "semicolon": true,
         "variable-name": [
