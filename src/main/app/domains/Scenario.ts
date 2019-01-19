@@ -1,8 +1,7 @@
-import { State } from "@app/domains";
 import { IScenario, IState } from "@app/interfaces";
+import { Log } from "@app/utils";
 import { Router } from "express";
 import { Subject } from "rxjs";
-import { Log } from "@app/utils";
 
 export class Scenario implements IScenario {
 
